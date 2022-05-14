@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3F80A2DE282A84EC0063BD26"
-               BuildableName = "ThemeSwitch.app"
+               BuildableName = "ThemeSwitchMVVM.app"
                BlueprintName = "ThemeSwitchMVVM"
                ReferencedContainer = "container:ThemeSwitchMVVM.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3F80A2DE282A84EC0063BD26"
-            BuildableName = "ThemeSwitch.app"
+            BuildableName = "ThemeSwitchMVVM.app"
             BlueprintName = "ThemeSwitchMVVM"
             ReferencedContainer = "container:ThemeSwitchMVVM.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3F80A2DE282A84EC0063BD26"
-            BuildableName = "ThemeSwitch.app"
+            BuildableName = "ThemeSwitchMVVM.app"
             BlueprintName = "ThemeSwitchMVVM"
             ReferencedContainer = "container:ThemeSwitchMVVM.xcodeproj">
          </BuildableReference>

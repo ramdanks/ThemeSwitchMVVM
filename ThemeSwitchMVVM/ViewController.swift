@@ -19,17 +19,17 @@ class ViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        tableView.dataSource = self
-        searchBar.delegate = self
-        viewModel = ViewModel()
+        tableView.dataSource                    = self
+        searchBar.delegate                      = self
+        viewModel                               = ViewModel()
+        slider.value                            = viewModel.textFieldSliderValue
+        stepperTextField.value                  = Double(viewModel.textFieldStepper)
         viewModel.$labelText.bind               { [unowned self] in label.text = $0 }
         viewModel.$buttonText.bind              { [unowned self] in button.setTitle($0, for: .normal) }
         viewModel.$progressValue.bind           { [unowned self] in progress.progress = $0 ?? 0 }
         viewModel.$textFieldPlaceholder.bind    { [unowned self] in textField.placeholder = $0 }
         viewModel.$textFieldTextShown.bind      { [unowned self] in textField.text = $0 }
         viewModel.$textFieldStepperString.bind  { [unowned self] in labelTextField.text = $0 }
-        viewModel.$textFieldSliderValue.bind    { [unowned self] in slider.value = $0 }
-        viewModel.$textFieldStepper.bind        { [unowned self] in stepperTextField.value = Double($0) }
         viewModel.$textFieldProgressValue.bind  { [unowned self] in textFieldProgress.progress = $0 ?? 0 }
         viewModel.$tableFilterData.bind         { [unowned self] _ in DispatchQueue.main.async { self.tableView.reloadData() } }
     }

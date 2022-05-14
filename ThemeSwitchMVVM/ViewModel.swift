@@ -7,13 +7,11 @@ class ViewModel
     
     // MARK: Modifiable Properties
     
-    @Bindable
     public var theme: Theme {
         didSet {
             buttonText = theme == .dark ? "Dark Button" : "Light Button"
     }}
     
-    @Bindable
     public var searchText: String {
         didSet {
             if (searchText.isEmpty)
@@ -25,7 +23,13 @@ class ViewModel
             tableFilterData = tableData.filter({ $0.lowercased().contains(caseInsensitiveText) })
     }}
     
-    @Bindable
+    public var textFieldText: String {
+        didSet {
+            textFieldProgressValue = Float(textFieldText.count) / Float(textFieldStepper)
+            textFieldSliderValue = 1.0
+            textFieldTextShown = textFieldText
+    }}
+    
     public var textFieldSliderValue: Float {
         didSet {
             let maxLength = Int(Float(textFieldText.count) * textFieldSliderValue)
@@ -33,19 +37,11 @@ class ViewModel
             textFieldTextShown = String(textFieldText.prefix(maxLength))
     }}
     
-    @Bindable
     public var textFieldStepper: Int {
         didSet {
             textFieldProgressValue = Float(textFieldText.count) / Float(textFieldStepper)
             textFieldStepperString = "Text Field Full Mana: \(textFieldStepper)"
     }}
-    
-    public var textFieldText: String {
-        didSet {
-            textFieldProgressValue = Float(textFieldText.count) / Float(textFieldStepper)
-            textFieldSliderValue = 1.0
-            textFieldTextShown = textFieldText
-        }}
     
     // MARK: Table Data
     
