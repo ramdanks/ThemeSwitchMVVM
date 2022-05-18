@@ -20,7 +20,7 @@
                                 <subviews>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="z0b-Uq-BiD">
                                         <rect key="frame" x="32" y="193" width="350" height="51"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wBS-hP-Mb3">
                                         <rect key="frame" x="32" y="244" width="350" height="400"/>
@@ -93,7 +93,7 @@
                                             <constraint firstAttribute="height" constant="50" id="w1f-iE-KVD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <connections>
                                             <action selector="onEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="YBt-s3-j8w"/>
                                         </connections>
@@ -190,6 +190,7 @@
                         <outlet property="searchBar" destination="z0b-Uq-BiD" id="hWw-sj-7Gm"/>
                         <outlet property="slider" destination="vlh-Dm-hHl" id="r7Z-b9-cTy"/>
                         <outlet property="stepperTextField" destination="pn4-Uz-VQI" id="CQd-hv-HyG"/>
+                        <outlet property="styleSegmentedControl" destination="mHm-eG-IoS" id="hoB-nK-j5d"/>
                         <outlet property="tableView" destination="wBS-hP-Mb3" id="VG4-38-6Gl"/>
                         <outlet property="textField" destination="yZW-rK-c5l" id="iSA-76-ZTb"/>
                         <outlet property="textFieldProgress" destination="hoE-Uv-Eao" id="hjs-Wu-WlA"/>

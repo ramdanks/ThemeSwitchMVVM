@@ -3,11 +3,10 @@ import UIKit
 
 class ViewModel
 {
-    enum Theme { case light, dark }
-    
     // MARK: Modifiable Properties
     
-    public var theme: Theme {
+    @Bindable
+    public var theme: UIUserInterfaceStyle {
         didSet {
             buttonText = theme == .dark ? "Dark Button" : "Light Button"
     }}
@@ -91,9 +90,9 @@ class ViewModel
     
     // MARK: Functionality
     
-    init()
+    init(_ style: UIUserInterfaceStyle)
     {
-        theme = .dark
+        theme = style
         searchText = ""
         textFieldText = ""
         textFieldStepper = 10

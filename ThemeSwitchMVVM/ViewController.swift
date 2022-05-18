@@ -13,6 +13,7 @@ class ViewController: UIViewController
     @IBOutlet weak var labelTextField: UILabel!
     @IBOutlet weak var stepperTextField: UIStepper!
     @IBOutlet weak var textFieldProgress: UIProgressView!
+    @IBOutlet weak var styleSegmentedControl: UISegmentedControl!
     
     private var viewModel: ViewModel!
     
@@ -21,7 +22,13 @@ class ViewController: UIViewController
         super.viewDidLoad()
         tableView.dataSource                    = self
         searchBar.delegate                      = self
-        viewModel                               = ViewModel()
+        searchBar.searchTextField.delegate      = self
+        textField.delegate                      = self
+        
+        let style = UIScreen.main.traitCollection.userInterfaceStyle
+        styleSegmentedControl.selectedSegmentIndex = style == .dark ? 0 : 1
+        
+        viewModel                               = ViewModel(style)
         slider.value                            = viewModel.textFieldSliderValue
         stepperTextField.value                  = Double(viewModel.textFieldStepper)
         viewModel.$labelText.bind               { [unowned self] in label.text = $0 }
@@ -33,7 +40,6 @@ class ViewController: UIViewController
         viewModel.$textFieldProgressValue.bind  { [unowned self] in textFieldProgress.progress = $0 ?? 0 }
         viewModel.$tableFilterData.bind         { [unowned self] _ in DispatchQueue.main.async { self.tableView.reloadData() } }
     }
-    
     @IBAction func onButtonPressed(_ sender: UIButton)
     {
         viewModel.triggerProgression(0.1)
@@ -42,6 +48,8 @@ class ViewController: UIViewController
     @IBAction func onThemeChanged(_ sender: UISegmentedControl)
     {
         viewModel.theme = sender.selectedSegmentIndex == 0 ? .dark : .light
+        super.overrideUserInterfaceStyle = viewModel.theme
+        super.setNeedsStatusBarAppearanceUpdate()
     }
     
     @IBAction func onEditingChanged(_ sender: UITextField)
@@ -57,6 +65,15 @@ class ViewController: UIViewController
     @IBAction func onStepperChanged(_ sender: UIStepper)
     {
         viewModel.textFieldStepper = Int(sender.value)
+    }
+}
+
+extension ViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
